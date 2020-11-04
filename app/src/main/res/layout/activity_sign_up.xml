@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    tools:context=".ActivitySignUp">
+
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="@string/sign_up"
+        android:textAllCaps="true"
+        android:textColor="@color/color1"
+        android:textSize="@dimen/text_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_fill_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:text="Fill in this form to create your account:"
+        android:textColor="@color/color1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_sign_up" />
+
+    <ImageView
+        android:id="@+id/iv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_username"
+        app:layout_constraintRight_toLeftOf="@id/et_username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_fill_in" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:backgroundTint="@color/color1"
+        android:hint="@string/username"
+        android:textColor="@color/color1"
+        android:textColorHint="@color/color_hint"
+        app:layout_constraintBottom_toBottomOf="@id/iv_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_username"
+        app:layout_constraintStart_toEndOf="@id/iv_username"
+        app:layout_constraintTop_toBottomOf="@id/tv_fill_in" />
+
+    <ImageView
+        android:id="@+id/iv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_password"
+        app:layout_constraintRight_toLeftOf="@id/et_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_username" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:backgroundTint="@color/color1"
+        android:hint="Password"
+        android:password="true"
+        android:textColor="@color/color1"
+        android:textColorHint="@color/color_hint"
+        app:layout_constraintBottom_toBottomOf="@id/iv_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_password"
+        app:layout_constraintStart_toEndOf="@id/iv_password"
+        app:layout_constraintTop_toBottomOf="@id/et_username" />
+
+
+    <ImageView
+        android:id="@+id/iv_confirm_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_password"
+        app:layout_constraintRight_toLeftOf="@id/et_confirm_password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_password" />
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/color1"
+        android:hint="Confirm password"
+        android:password="true"
+        android:textColor="@color/color1"
+        android:textColorHint="@color/color_hint"
+        app:layout_constraintBottom_toBottomOf="@id/iv_confirm_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_confirm_password"
+        app:layout_constraintStart_toEndOf="@id/iv_confirm_password"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
+    <ImageView
+        android:id="@+id/iv_date_of_birth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_date_of_birth"
+        app:layout_constraintRight_toLeftOf="@id/et_date_of_birth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_email" />
+
+    <EditText
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/color1"
+        android:textColor="@color/color1"
+        android:textColorHint="@color/color_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_date_of_birth"
+        android:hint="Date of birth"
+        app:layout_constraintBottom_toBottomOf="@id/iv_date_of_birth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_date_of_birth"
+        app:layout_constraintStart_toEndOf="@id/iv_date_of_birth"
+        app:layout_constraintTop_toBottomOf="@id/et_email"
+        />
+
+    <ImageView
+        android:id="@+id/iv_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_gender"
+        app:layout_constraintRight_toLeftOf="@id/spinner_gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_date_of_birth" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/spinner_gender"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@id/iv_gender"
+        app:layout_constraintLeft_toRightOf="@id/iv_gender"
+        app:layout_constraintStart_toEndOf="@id/iv_gender"
+        app:layout_constraintTop_toBottomOf="@id/et_date_of_birth"
+        />
+
+    <CheckBox
+        android:id="@+id/cb_accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:layout_marginRight="10dp"
+        android:buttonTint="@color/color1"
+        android:src="@drawable/ic_password"
+        app:layout_constraintRight_toLeftOf="@id/tv_accept"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_gender" />
+
+    <TextView
+        android:id="@+id/tv_accept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:backgroundTint="@color/color1"
+        android:text="I accept the Terms of Use and Privacy Policy."
+        android:textColor="@color/color1"
+        app:layout_constraintBottom_toBottomOf="@id/cb_accept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/cb_accept"
+        app:layout_constraintStart_toEndOf="@id/cb_accept"
+        app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
+
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="sign up"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tv_accept" />
+    <ImageView
+        android:id="@+id/iv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_basex4"
+        android:src="@drawable/ic_email"
+        app:layout_constraintRight_toLeftOf="@id/et_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_confirm_password" />
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/color1"
+        android:hint="abc@gmail.com"
+        android:textColor="@color/color1"
+        android:textColorHint="@color/color_hint"
+        app:layout_constraintBottom_toBottomOf="@id/iv_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_email"
+        app:layout_constraintStart_toEndOf="@id/iv_email"
+        app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

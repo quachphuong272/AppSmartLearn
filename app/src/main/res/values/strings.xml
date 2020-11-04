@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">App Smart Learn</string>
+    <string name="app_name">Smart Learn</string>
+    <string name="log_in">log in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="slogan">The best way to learn English!</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="genders">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 </resources>
