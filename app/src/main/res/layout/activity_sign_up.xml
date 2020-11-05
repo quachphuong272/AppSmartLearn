@@ -16,8 +16,9 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:text="@string/sign_up"
         android:textAllCaps="true"
-        android:textColor="@color/color1"
+        android:textColor="@color/colorAccent"
         android:textSize="@dimen/text_medium"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basex4"
         android:text="Fill in this form to create your account:"
-        android:textColor="@color/color1"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_sign_up" />
 
@@ -39,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basex4"
         android:src="@drawable/ic_username"
-        app:layout_constraintRight_toLeftOf="@id/et_username"
+        app:layout_constraintRight_toLeftOf="@id/et_email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_fill_in" />
 
@@ -69,23 +72,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_username" />
 
+
     <EditText
         android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/margin_basex4"
         android:backgroundTint="@color/color1"
         android:hint="Password"
         android:password="true"
         android:textColor="@color/color1"
         android:textColorHint="@color/color_hint"
-        app:layout_constraintBottom_toBottomOf="@id/iv_password"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/iv_password"
         app:layout_constraintStart_toEndOf="@id/iv_password"
-        app:layout_constraintTop_toBottomOf="@id/et_username" />
-
+        app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
     <ImageView
         android:id="@+id/iv_confirm_password"
@@ -140,30 +142,6 @@
         app:layout_constraintTop_toBottomOf="@id/et_email"
         />
 
-    <ImageView
-        android:id="@+id/iv_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_basex4"
-        android:src="@drawable/ic_gender"
-        app:layout_constraintRight_toLeftOf="@id/spinner_gender"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_date_of_birth" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/spinner_gender"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="@id/iv_gender"
-        app:layout_constraintLeft_toRightOf="@id/iv_gender"
-        app:layout_constraintStart_toEndOf="@id/iv_gender"
-        app:layout_constraintTop_toBottomOf="@id/et_date_of_birth"
-        />
-
     <CheckBox
         android:id="@+id/cb_accept"
         android:layout_width="wrap_content"
@@ -174,7 +152,7 @@
         android:src="@drawable/ic_password"
         app:layout_constraintRight_toLeftOf="@id/tv_accept"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_gender" />
+        app:layout_constraintTop_toBottomOf="@id/et_date_of_birth" />
 
     <TextView
         android:id="@+id/tv_accept"
@@ -182,14 +160,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/margin_basex4"
-        android:backgroundTint="@color/color1"
+        android:backgroundTint="@color/colorAccent"
         android:text="I accept the Terms of Use and Privacy Policy."
         android:textColor="@color/color1"
         app:layout_constraintBottom_toBottomOf="@id/cb_accept"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/cb_accept"
         app:layout_constraintStart_toEndOf="@id/cb_accept"
-        app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
+        app:layout_constraintTop_toBottomOf="@id/et_date_of_birth" />
 
 
     <Button
@@ -226,6 +204,30 @@
         app:layout_constraintLeft_toRightOf="@id/iv_email"
         app:layout_constraintStart_toEndOf="@id/iv_email"
         app:layout_constraintTop_toBottomOf="@id/et_confirm_password" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Already account? Log in."
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

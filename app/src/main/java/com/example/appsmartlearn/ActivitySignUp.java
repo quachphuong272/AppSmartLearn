@@ -1,37 +1,56 @@
 package com.example.appsmartlearn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.widget.Button;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
-import java.util.Date;
 
 public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private EditText date;
-    Button btn_sign_up;
+    EditText aUsername, aPassword, aEmail, aDoB;
+    Button btn_sign_up, btn_log_in;
     DatePickerDialog datePickerDialog;
+    ProgressBar progressBar;
+    FirebaseAuth fAuth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
 
-        btn_sign_up = (Button) findViewById(R.id.btn_sign_up);
+
+        aUsername = findViewById(R.id.et_email);
+        aPassword = findViewById(R.id.et_password);
+        aEmail = findViewById(R.id.et_email);
+        aDoB = findViewById(R.id.et_date_of_birth);
+        btn_sign_up = findViewById(R.id.btn_sign_up);
+        fAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+
+//        if(fAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//            finish();
+//        }
+
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,14 +59,7 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
-        Spinner spinner = findViewById(R.id.spinner_gender);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.genders, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
-        date = findViewById(R.id.et_date_of_birth);
-        date.setOnClickListener(new View.OnClickListener() {
+        aDoB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
@@ -57,12 +69,56 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
                 datePickerDialog = new DatePickerDialog(ActivitySignUp.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(day+"/"+(month+1)+"/"+year);
+                        aDoB.setText(day+"/"+(month+1)+"/"+year);
                     }
                 },year,month,day);
                 datePickerDialog.show();
             }
         });
+
+        btn_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = aEmail.getText().toString().trim();
+                String password = aPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(email)) {
+                    aEmail.setError("Email is required !!!");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    aPassword.setError("Password is required !!!");
+                    return;
+                }
+                if (password.length() < 6) {
+                    aPassword.setError("Password must be more than 6 characters !!!");
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+
+                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(ActivitySignUp.this, "User Created", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), ActivityLogIn.class));
+                        } else {
+                            Toast.makeText(ActivitySignUp.this, "Error!!!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+            }
+        });
+//                btn_log_in.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(),ActivityLogIn.class));
+//            }
+//        });
+
     }
 
     @Override
@@ -76,4 +132,6 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 }
