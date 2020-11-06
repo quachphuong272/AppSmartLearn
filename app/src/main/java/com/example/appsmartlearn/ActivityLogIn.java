@@ -34,7 +34,7 @@ public class ActivityLogIn extends AppCompatActivity {
         btn_log_in = findViewById(R.id.btn_log_in);
         aPassword = findViewById(R.id.et_password);
         aEmail = findViewById(R.id.et_email);
-        btn_sign_up = findViewById(R.id.btn_sign_up);
+        btn_sign_up = findViewById(R.id.btn_Sign_Up);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar2);
 
@@ -66,8 +66,17 @@ public class ActivityLogIn extends AppCompatActivity {
                         }
                     }
                 });
+
             }
         });
+        btn_sign_up.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ActivityLogIn.this, "Fill to Register", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),ActivitySignUp.class));
+            }
+        });
+
 
     }
 }
@@ -81,9 +90,3 @@ public class ActivityLogIn extends AppCompatActivity {
 
 
 
-//                btn_sign_up.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),ActivitySignUp.class));
-//            }
-//        });

@@ -38,11 +38,12 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_sign_up);
 
 
-        aUsername = findViewById(R.id.et_email);
+        aUsername = findViewById(R.id.et_username);
         aPassword = findViewById(R.id.et_password);
         aEmail = findViewById(R.id.et_email);
         aDoB = findViewById(R.id.et_date_of_birth);
         btn_sign_up = findViewById(R.id.btn_sign_up);
+        btn_log_in = findViewById(R.id.btnLogin);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
@@ -110,15 +111,17 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
 
                     }
                 });
+
             }
         });
-//                btn_log_in.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(),ActivityLogIn.class));
-//            }
-//        });
 
+        btn_log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ActivitySignUp.this, "Fill to Log In", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(),ActivityLogIn.class));
+            }
+        });
     }
 
     @Override

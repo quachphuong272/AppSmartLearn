@@ -4,35 +4,47 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/colorPrimary"
+android:background="@color/picton"
 android:paddingLeft="@dimen/activity_vertical_margin"
 android:paddingRight="@dimen/activity_vertical_margin"
 tools:context=".ActivityLogIn">
+
+    <ImageView
+        android:id="@+id/iv_app"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_app"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
 
     <TextView
         android:id="@+id/tv_log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="24dp"
         android:text="@string/log_in"
         android:textAllCaps="true"
-        android:textColor="@color/design_default_color_secondary"
+        android:textColor="@color/color1"
         android:textSize="@dimen/text_medium"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_app" />
 
-<ImageView
-    android:id="@+id/iv_username"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_basex5"
-    android:layout_marginRight="@dimen/margin_basex2"
-    android:src="@drawable/ic_username"
-    app:layout_constraintRight_toLeftOf="@id/et_email"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tv_log_in" />
+    <ImageView
+        android:id="@+id/iv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="@dimen/margin_basex2"
+        android:src="@drawable/ic_username"
+        app:layout_constraintRight_toLeftOf="@id/et_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_log_in" />
 
 
     <EditText
@@ -40,14 +52,15 @@ tools:context=".ActivityLogIn">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="9dp"
         android:backgroundTint="@color/color1"
         android:hint="Email "
         android:textColor="@color/color1"
-        android:textColorHint="@color/color_hint"
-        app:layout_constraintBottom_toBottomOf="@id/iv_username"
+        android:textColorHint="@color/color1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/iv_username"
-        app:layout_constraintStart_toEndOf="@id/iv_username" />
+        app:layout_constraintStart_toEndOf="@id/iv_username"
+        app:layout_constraintTop_toBottomOf="@+id/tv_log_in" />
 
     <ImageView
     android:id="@+id/iv_password"
@@ -69,7 +82,7 @@ tools:context=".ActivityLogIn">
     android:hint="@string/password"
     android:password="true"
     android:textColor="@color/color1"
-    android:textColorHint="@color/color_hint"
+    android:textColorHint="@color/color1"
     app:layout_constraintBottom_toBottomOf="@id/iv_password"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintLeft_toRightOf="@id/iv_password"
@@ -81,11 +94,15 @@ tools:context=".ActivityLogIn">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basex6"
+        android:background="@color/colorPrimary"
         android:text="@string/log_in"
         android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@id/et_password"
-        tools:layout_editor_absoluteX="30dp" />
+        android:textColor="@color/color1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password" />
 
 
     <Button
@@ -95,7 +112,7 @@ tools:context=".ActivityLogIn">
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Forget password? Click here."
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/color1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -112,15 +129,15 @@ tools:context=".ActivityLogIn">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Sign_Up" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btn_Sign_Up"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already account? Log in."
-        android:textColor="@color/colorAccent"
+        android:text="Register new account"
+        android:textColor="@color/color1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

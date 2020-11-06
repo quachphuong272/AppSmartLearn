@@ -6,4 +6,9 @@
     <color name="color1">#FFFFFF</color>
     <color name="color2">#FF0000</color>
     <color name="color_hint">#CCCCCC</color>
+    
+    <color name="cornflower">#787FF9</color>
+    <color name="viking">#4ADEDE</color>
+    <color name="picton">#1CA7EC</color>
+    <color name="jackson">#1F2F98</color>
 </resources>

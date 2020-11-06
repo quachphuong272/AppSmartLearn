@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/picton"
     tools:context=".MainActivity">
 
     <ImageView
@@ -17,30 +17,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id = "@+id/tv_app_name"
-        android:text = "SMARTLearn"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:textSize="@dimen/text_medium"
-        android:textColor="@color/color1"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
 
     <TextView
+        android:id="@+id/tv_app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/tv_slogan"
-        android:text = "@string/slogan"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:text="SMART LEARN"
         android:textColor="@color/color1"
+        android:textSize="@dimen/text_medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basex3"
+        android:text="@string/slogan"
+        android:textColor="@color/color1"
         android:textSize="@dimen/text_small"
-        app:layout_constraintTop_toBottomOf="@id/iv_app"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@id/tv_app_name"
         app:layout_constraintRight_toRightOf="@id/tv_app_name"
-        app:layout_constraintLeft_toLeftOf="@id/tv_app_name"/>
+        app:layout_constraintTop_toBottomOf="@id/iv_app" />
 
     <Button
         android:id = "@+id/btn_log_in"
@@ -62,7 +64,7 @@
         android:layout_marginRight="@dimen/margin_basex4"
         android:layout_marginLeft="@dimen/margin_basex4"
         android:layout_marginBottom="@dimen/margin_basex5"
-        android:text = "@string/sign_up"
+        android:text = "@string/register"
         android:textAllCaps="true"
         android:textColor="@color/color2"
         app:layout_constraintBottom_toTopOf="@id/btn_log_in"

@@ -13,20 +13,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:id="@+id/toolbar"
-            android:background="@color/colorPrimary"
+            android:background="@color/picton"
+            android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp"/>
-        <FrameLayout
-            android:id="@+id/fragment_container"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        <GridView
+            android:id="@+id/catGridView"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-        </FrameLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:columnWidth="100dp"
+            android:numColumns="2"
+            />
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
