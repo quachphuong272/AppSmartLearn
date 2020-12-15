@@ -14,6 +14,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +42,8 @@ public class Home extends AppCompatActivity {
         toggle.syncState();
         catGrid = findViewById(R.id.catGridView);
 
-        List<String> catList = new ArrayList<>();
+        final List<String> catList = new ArrayList<>();
+
         catList.add("Cat 1");
         catList.add("Cat 2");
         catList.add("Cat 3");
@@ -65,4 +72,5 @@ public class Home extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
+    }
+    

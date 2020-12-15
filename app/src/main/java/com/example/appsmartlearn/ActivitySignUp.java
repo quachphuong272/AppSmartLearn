@@ -97,8 +97,6 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
-
                 fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -107,11 +105,12 @@ public class ActivitySignUp extends AppCompatActivity implements AdapterView.OnI
                             startActivity(new Intent(getApplicationContext(), ActivityLogIn.class));
                         } else {
                             Toast.makeText(ActivitySignUp.this, "Error!!!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
 
                     }
                 });
-
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 
