@@ -7,18 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class LessonListActivity extends AppCompatActivity {
+public class ActivityNormalVocabList extends AppCompatActivity {
     private RecyclerView mRecycleView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_list);
+        setContentView(R.layout.activity_normal_vocab_list);
         mRecycleView = (RecyclerView) findViewById(R.id.recycleview_Lesson);
-        new FirebaseLesson().readLesson(new FirebaseLesson.DataStatus() {
+
+        new FirebaseNormalVocab().readNormalVocab(new FirebaseNormalVocab.DataStatus() {
             @Override
-            public void DataIsLoaded(List<ModelLesson> lessons, List<String> keys) {
-                new LessonRecycleView().setConfig(mRecycleView, LessonListActivity.this, lessons, keys);
+            public void DataIsLoaded(List<ModelNormalVocab> vocabs, List<String> keys) {
+                new NormalVocabRecycleView().setConfig(mRecycleView, ActivityNormalVocabList.this, vocabs, keys);
             }
 
             @Override
@@ -35,6 +36,9 @@ public class LessonListActivity extends AppCompatActivity {
             public void DataIsDeleted() {
 
             }
+
         });
+
     }
+
 }

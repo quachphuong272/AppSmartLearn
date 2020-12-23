@@ -12,9 +12,10 @@
         <activity android:name=".SetsActivity" />
         <activity android:name=".ScoreActivity" />
         <activity android:name=".QuestionActivity" />
-        <activity android:name=".Home"
-            android:parentActivityName=".ActivityLogIn"
-            android:label="Home">
+        <activity
+            android:name=".HomePage"
+            android:label="HomePage"
+            android:parentActivityName=".ActivityLogIn">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ActivityLogIn" />
@@ -40,14 +41,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-<!--        <activity-->
-<!--            android:name=".LessonListActivity"-->
-<!--            android:parentActivityName=".MainActivity">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.PARENT_ACTIVITY"-->
-<!--                android:value=".MainActivity" />-->
-<!--        </activity>-->
+        <activity
+            android:name=".ActivityNormalVocabList"
+            android:parentActivityName=".HomePage"
+            android:label="600 Words Toeic">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePage" />
+        </activity>
+        <activity
+            android:name=".ActivityImgVocab"
+            android:parentActivityName=".HomePage"
+            android:label="Learn Vocab With Image">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomePage" />
+        </activity>
     </application>
 
 </manifest>

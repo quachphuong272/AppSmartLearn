@@ -30,8 +30,8 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:columnWidth="100dp"
-            android:numColumns="2"
-            />
+            android:numColumns="2">
+        </GridView>
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"

@@ -11,35 +11,35 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseLesson {
+public class FirebaseNormalVocab {
     private FirebaseDatabase mDatabase;
-    private DatabaseReference mReferenceLessons;
-    private List<ModelLesson> lessons = new ArrayList<>();
+    private DatabaseReference mReference;
+    private List<ModelNormalVocab> vocabs = new ArrayList<>();
 
     public interface DataStatus {
-        void DataIsLoaded(List<ModelLesson> lessons, List<String> keys);
+        void DataIsLoaded(List<ModelNormalVocab> vocabs, List<String> keys);
         void DataIsInserted();
         void DataIsUpdated();
         void DataIsDeleted();
     }
 
-    public FirebaseLesson() {
+    public FirebaseNormalVocab() {
         mDatabase = FirebaseDatabase.getInstance();
-        mReferenceLessons = mDatabase.getReference("Lesson");
+        mReference = mDatabase.getReference("Normal_Vocab");
     }
 
-    public void readLesson (final DataStatus dataStatus){
-        mReferenceLessons.addValueEventListener(new ValueEventListener() {
+    public void readNormalVocab (final DataStatus dataStatus){
+        mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                lessons.clear();
+                vocabs.clear();
                 List<String> keys = new ArrayList<>();
                 for (DataSnapshot keyNode : snapshot.getChildren()){
                     keys.add(keyNode.getKey());
-                    ModelLesson lesson = keyNode.getValue(ModelLesson.class);
-                    lessons.add(lesson);
+                    ModelNormalVocab vocab = keyNode.getValue(ModelNormalVocab.class);
+                    vocabs.add(vocab);
                 }
-                dataStatus.DataIsLoaded(lessons,keys);
+                dataStatus.DataIsLoaded(vocabs,keys);
             }
 
             @Override

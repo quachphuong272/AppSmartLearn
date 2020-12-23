@@ -8,6 +8,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -40,9 +41,15 @@ public class Home extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
         catGrid = findViewById(R.id.catGridView);
 
+
+
         final List<String> catList = new ArrayList<>();
+
+
 
         catList.add("Cat 1");
         catList.add("Cat 2");
