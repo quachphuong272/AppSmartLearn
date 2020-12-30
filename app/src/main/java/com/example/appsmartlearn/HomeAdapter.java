@@ -2,6 +2,7 @@ package com.example.appsmartlearn;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,12 +54,13 @@ public class HomeAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(parent.getContext(),SetsActivity.class);
-                intent.putExtra("CATEGORY", catList.get(position));
+                 intent.putExtra("CATEGORY", catList.get(position));
+                intent.putExtra("CATEGORY_ID",position+1);
                 parent.getContext().startActivity(intent);
             }
         });
 
-        ((TextView) view.findViewById(R.id.catName)).setText(catList.get(position));
+        ((TextView) view.findViewById(R.id.catName)).setText((CharSequence) catList.get(position));
 
 
 

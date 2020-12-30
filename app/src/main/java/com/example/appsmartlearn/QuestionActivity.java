@@ -1,6 +1,7 @@
 package com.example.appsmartlearn;
 
 import android.animation.Animator;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -8,14 +9,26 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.appsmartlearn.SetsActivity.category_id;
 
 public class QuestionActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -25,6 +38,11 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
     private int quesNum;
     private CountDownTimer countDown;
     private int score;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
+    public static int setNo;
+    private Dialog loadingDialog;
+
 
 
     @Override
@@ -45,22 +63,71 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         option2.setOnClickListener(this);
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
+        setNo =getIntent().getIntExtra("SETNO",1);
+
+        loadingDialog = new Dialog(QuestionActivity.this);
+        loadingDialog.setContentView(R.layout.loading_progressbar);
+        loadingDialog.setCancelable(false);
+        loadingDialog.getWindow().setBackgroundDrawableResource(R.drawable.progress_background);
+        loadingDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        loadingDialog.show();
+
 
         getQuestionList();
 
         score = 0;
 
     }
+    public QuestionActivity() {
+
+    }
 
     private void getQuestionList() {
         questionList = new ArrayList<>();
-        questionList.add(new Question("Question 1","A","B","C","D",2));
-        questionList.add(new Question("Question 2","B","B","D","A",2));
-        questionList.add(new Question("Question 3","C","B","A","D",2));
-        questionList.add(new Question("Question 4","A","D","C","B",2));
-        questionList.add(new Question("Question 5","C","D","A","D",2));
+        mDatabase=FirebaseDatabase.getInstance();
+        mReference =mDatabase.getReference("Category").child("Cat"+Integer.valueOf(category_id)).child("SET"+Integer.valueOf(setNo));
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-        setQuestion();
+                for(DataSnapshot doc :snapshot.getChildren())
+                {
+                    String A  =doc.child("A").getValue().toString();
+                    String B  =doc.child("B").getValue().toString();
+                    String C  =doc.child("C").getValue().toString();
+                    String D  =doc.child("D").getValue().toString();
+                    String Ans  =doc.child("Ans").getValue().toString();;
+                    String Questions  =doc.child("Question").getValue().toString();
+
+                    questionList.add(new Question(Questions,A,B,C,D,Integer.valueOf(Ans)));
+//                    Toast.makeText(QuestionActivity.this,""+ Ans,Toast.LENGTH_SHORT).show();
+
+//                    questionList.add(new Question(  doc.child("Question").getValue().toString(),
+//                           doc.child("A").getValue().toString(),
+//                            doc.child("B").getValue().toString(),
+//                            doc.child("C").getValue().toString(),
+//                            doc.child("D").getValue().toString()
+//                            ,Integer.valueOf(Ans)));
+//                    questionList.add(new Question(doc.getKey().concat("Questions"),
+//                            doc.getKey().concat("A"),
+//                            doc.getKey().concat("B"),
+//                            doc.getKey().concat("C"),
+//                            doc.getKey().concat("D"),
+//                            Integer.valueOf(doc.getKey().concat("Ans"))));
+
+                }
+                setQuestion();
+                loadingDialog.cancel();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+       // setQuestion();
     }
 
     private void setQuestion() {
@@ -253,3 +320,4 @@ public class QuestionActivity extends AppCompatActivity implements View.OnClickL
         countDown.cancel();
     }
 }
+

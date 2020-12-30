@@ -26,7 +26,7 @@ public class HomePage extends AppCompatActivity {
 
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
+            btn_quiz=findViewById(R.id.quiz_vocab);
             drawer = findViewById(R.id.drawer_layout);
             btn_normal_vocab = findViewById(R.id.normal_vocab);
             btn_img_vocab = findViewById(R.id.img_vocab);
@@ -46,6 +46,12 @@ public class HomePage extends AppCompatActivity {
                 @Override
                 public void onClick(View v){
                     startActivity(new Intent(getApplicationContext(), ActivityImgVocab.class));
+                }
+            });
+            btn_quiz.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getApplicationContext(),Home.class));
                 }
             });
         }

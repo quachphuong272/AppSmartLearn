@@ -31,7 +31,7 @@ public class SetsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
 
         View view;
         if(convertView == null)
@@ -48,6 +48,7 @@ public class SetsAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(parent.getContext(),QuestionActivity.class);
+                intent.putExtra("SETNO",position+1);
                 parent.getContext().startActivity(intent);
             }
         });

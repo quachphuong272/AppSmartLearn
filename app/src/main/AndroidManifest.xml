@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SetsActivity" />
+        <activity android:name=".Home"/>
         <activity android:name=".ScoreActivity" />
         <activity android:name=".QuestionActivity" />
         <activity
@@ -57,6 +58,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomePage" />
         </activity>
+
     </application>
 
 </manifest>

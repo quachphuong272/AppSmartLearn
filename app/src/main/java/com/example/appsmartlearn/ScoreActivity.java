@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ScoreActivity extends AppCompatActivity {
     private TextView score;
-    private Button done;
+    private Button done ,back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,7 @@ public class ScoreActivity extends AppCompatActivity {
 
         score = findViewById(R.id.sa_score);
         done = findViewById(R.id.sa_done);
+        back=findViewById(R.id.backhome);
 
         String score_str = getIntent().getStringExtra("SCORE");
         score.setText(score_str);
@@ -30,5 +31,14 @@ public class ScoreActivity extends AppCompatActivity {
                 ScoreActivity.this.finish();
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(ScoreActivity.this,Home.class);
+                ScoreActivity.this.startActivity(intent);
+                ScoreActivity.this.finish();
+            }
+        });
+
     }
 }

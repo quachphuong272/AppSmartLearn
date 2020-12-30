@@ -3,14 +3,15 @@ package com.example.appsmartlearn;
 public class CategoryModel {
     private String id_category;
     private String name_category;
-    private String description;
 
-    public CategoryModel(String id, String name, String desc)
+
+    public CategoryModel(String id, String name)
     {
         this.id_category = id;
         this.name_category = name;
-        this.description = desc;
+
     }
+
 
     public String getId_category() {
         return id_category;
